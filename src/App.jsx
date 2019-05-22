@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FormContainer } from './components';
 
 const StyledApp = styled.div`
   background: url('./bg.png');
