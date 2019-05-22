@@ -1,0 +1,28 @@
+{
+  "formSchema": [
+    {
+      "label": "First Name",
+      "type": "text"
+    },
+    {
+      "label": "Last Name",
+      "type": "text"
+    },
+    {
+      "label": "email",
+      "type": "email"
+    },
+    {
+      "label": "Age",
+      "type": "number"
+    },
+    {
+      "label": "Gender",
+      "type": "radio"
+    },
+    {
+      "label": "Date of Birth",
+      "type": "date"
+    }
+  ]
+}
