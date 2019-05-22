@@ -2,13 +2,9 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    'jest/globals': true,
+    jest: true,
   },
-  extends: 'airbnb',
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -16,6 +12,14 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react'],
-  rules: {},
+  plugins: ['flowtype', 'react'],
+  extends: 'airbnb',
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  rules: {
+    'flowtype/define-flow-type': 1,
+    'flowtype/use-flow-type': 1,
+  },
 };
