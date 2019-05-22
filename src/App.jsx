@@ -27,7 +27,9 @@ function App() {
       <AppHeader>
         <h1>Dynamic Form Builder</h1>
       </AppHeader>
-      <AppMain />
+      <AppMain>
+        <FormContainer />
+      </AppMain>
     </StyledApp>
   );
 }
