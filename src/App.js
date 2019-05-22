@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+
+const StyledApp = styled.div`
+  background: url('./bg.png');
+`;
+
+const AppHeader = styled.header`
+  align-items: center;
+  background-color: var(--lite-green);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+  min-height: 20vh;
+`;
+
+const AppMain = styled.main`
+  min-height: 80vh;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledApp>
+      <AppHeader>
+        <h1>Dynamic Form Builder</h1>
+      </AppHeader>
+      <AppMain />
+    </StyledApp>
   );
 }
 
