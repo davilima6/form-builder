@@ -1,21 +1,22 @@
 import React from 'react';
-import { render } from 'react-testing-library';
-import renderer from 'react-test-renderer';
+import { cleanup, render } from 'react-testing-library';
+import 'jest-dom/extend-expect';
+import 'jest-styled-components';
 import Form from './Form';
 
 describe('Form', () => {
   let component;
 
   beforeEach(() => {
+    cleanup();
     component = render(<Form />);
   });
 
   test('renders without crashing', () => expect(component).toBeDefined());
 
   test('matches snapshot', () => {
-    const component = renderer.create(<Form />);
-    const json = component.toJSON();
+    const { asFragment } = component;
 
-    expect(json).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });
