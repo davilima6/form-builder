@@ -1,87 +1,112 @@
+// @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { normalize } from '../../utils';
+import { Error as TypeError, normalize } from '../../utils';
 import { Button, Field } from '..';
 
-const { useCallback, useState } = React;
+const { useCallback, useReducer } = React;
 
 const StyledForm = styled.form`
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid var(--lite-grey);
   border-radius: 4px;
   box-shadow: 0 2px 2px 0 rgba(47, 55, 64, 0.2), 0 6px 10px 0 rgba(47, 55, 64, 0.2);
-  margin: 0.4em 0;
-  max-width: 40vw;
-  ${props => props.primary
+  margin: 1em 0 1.5em;
+  min-width: 60vw;
+  padding: 2em 3em 0;
+
+  ${props => props.error
     && css`
-      background-color: #000;
-      color: #fff;
-    `}
+      border-color: var(--dark-red);
+    `};
+`;
+
+const FormHeader = styled.div`
+  margin-bottom: 2em;
+`;
+
+const FormTitle = styled.h2``;
+
+const FormDescription = styled.p`
+  font-style: italic;
 `;
 
 const FormActions = styled.div`
-  border-top: 1px solid grey;
+  display: flex;
+  margin-top: 3em;
+  padding: 0.5em;
 `;
 
-const Error = styled.div`
+const StyledError = styled.div`
   border: 1px dashed red;
 `;
 
 type Props = {
-  schema: {
-    fields: Array<string>,
-    properties: mixed,
-    required: Array<string>,
-  },
-  data: Array<Object>,
-  errors: Array<Object>,
-  onSetData?: Function,
+  schema: Array<Field>,
+  errors?: Array<TypeError>,
+  data?: { [string]: string },
   onSubmit?: Function,
   onCancel?: Function,
 };
 
-function Form({
-  schema, data, errors, onSubmit, onCancel,
-}: Props) {
-  const [formData, setFormData] = useState(data);
+const Form = ({
+  schema, errors = [], onSubmit, onCancel,
+}: Props) => {
+  const [formData: Object<{ [string]: mixed }>, dispatch] = useReducer(
+    (state, action) => ({ ...state, ...action }),
+    {},
+  );
 
-  const onChangeField = useCallback((event) => {
-    const inputValue = event.target.value;
+  const onChangeField = useCallback(
+    (label, value) => {
+      dispatch({ [normalize(label)]: value });
+    },
+    [dispatch],
+  );
 
-    setFormData(inputValue);
-  }, []);
+  const FormHead = () => (
+    <FormHeader>
+      <FormTitle>Title of the form</FormTitle>
+      <FormDescription>Longer description of the form</FormDescription>
+    </FormHeader>
+  );
 
   return (
-    <StyledForm method="post" onSubmit={onSubmit}>
-      {errors && Object.keys(errors).map(error => <Error key={error.message}>{error}</Error>)}
-      {schema
-        && schema.map((field) => {
-          const fieldName = normalize(field.label);
+    <StyledForm method="post" onSubmit={onSubmit} error={errors.length}>
+      <FormHead />
+      {errors.map((error: TypeError) => (
+        <StyledError key={normalize(error.message)}>{error.message}</StyledError>
+      ))}
+      {schema.map((field) => {
+        const key = normalize(`${field.type}_${field.label}`);
+        const fieldName = normalize(field.label);
 
-          return (
-            <Field
-              key={`${field.type}_${field.label}`}
-              id={fieldName}
-              value={formData[fieldName]}
-              type={fieldName}
-              onChange={onChangeField}
-              error={errors[fieldName]}
-              required
-            />
-          );
-        })}
+        return (
+          <Field
+            key={key}
+            id={fieldName}
+            label={field.label}
+            type={field.type}
+            value={formData[fieldName] ? formData[fieldName] : ''}
+            errors={errors[fieldName]}
+            onChangeField={onChangeField}
+            required
+          />
+        );
+      })}
       <FormActions>
-        {onSubmit && <Button type="submit" float="right" title="Send" primary />}
-        {onCancel && <Button type="reset" float="left" title="Clear" onClick={onCancel} />}
+        {onSubmit && <Button type="submit" title="Send" floated="right" primary />}
+        {onCancel && <Button type="reset" title="Clear" floated="left" onClick={onCancel} />}
       </FormActions>
     </StyledForm>
   );
-}
+};
 
 Form.defaultProps = {
-  onSetData: () => {},
+  data: {},
+  errors: [],
   onSubmit: () => {},
-  onCancel: null,
+  onCancel: () => {},
 };
 
 export default Form;

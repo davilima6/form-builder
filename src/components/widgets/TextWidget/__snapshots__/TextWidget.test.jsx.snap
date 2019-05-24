@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextWidget matches snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  background-color: #fff;
+}
+
+.c1 .label {
+  font-variant: small-caps;
+}
+
+<div
+    class="c0"
+  >
+    <label
+      class="c1"
+      for="field-undefined"
+    >
+      <span
+        class="label"
+      >
+        First Name
+      </span>
+      <input
+        id="field-undefined"
+        type="text"
+        value="John"
+      />
+    </label>
+  </div>
+</DocumentFragment>
+`;

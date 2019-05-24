@@ -1,8 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form matches snapshot 1`] = `
-<form
-  className="sc-bdVaJa HQRvy"
-  method="post"
-/>
+<DocumentFragment>
+  <form
+    class="sc-kgoBCf cCfYcM"
+    method="post"
+  >
+    <div
+      class="sc-kGXeez boIQDi"
+    >
+      <button
+        class="sc-bdVaJa dWqSyo"
+        title="Send"
+        type="submit"
+      >
+        Send
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
 `;

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailWidget matches snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  background-color: #fff;
+}
+
+.c1 .label {
+  font-variant: small-caps;
+}
+
+<div
+    class="c0"
+  >
+    <label
+      class="c1"
+      for="field-undefined"
+    >
+      <span
+        class="label"
+      >
+        Date of Birth
+      </span>
+      <input
+        id="field-undefined"
+        type="email"
+        value="Thu Jan 01 1970 01:00:00 GMT+0100 (Central European Standard Time)"
+      />
+    </label>
+  </div>
+</DocumentFragment>
+`;

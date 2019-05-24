@@ -1,3 +1,4 @@
+// @flow
 import React, { useCallback, lazy, Suspense } from 'react';
 import styled from 'styled-components';
 import { useForm } from '../../utils';
@@ -6,46 +7,37 @@ import { Spinner } from '..';
 const Form = lazy(() => import('../Form/Form'));
 
 const StyledFormContainer = styled.section`
-  background-color: #fff;
+  display: flex;
+  justify-content: center;
 `;
 
-function validate() {
-  return true;
-}
+// function validate(data): boolean {
+//   return true || data;
+// }
 
-function redirectToSucess() {
-  return true;
-}
+function redirectToSucess(): void {}
 
-function FormContainer() {
-  const {
-    schema, data, setData, errors,
-  } = useForm();
+const FormContainer = () => {
+  const { schema, errors, setErrors } = useForm();
 
-  const onSubmit = useCallback((event) => {
+  const onSubmit = useCallback((event: SyntheticEvent<>) => {
     event.preventDefault();
-    validate(data);
+    // validate(data);
     redirectToSucess();
   }, []);
 
   const onCancel = useCallback(() => {
-    setData({});
-  }, []);
+    // setData({});
+    setErrors([]);
+  }, [setErrors]);
 
   return (
     <StyledFormContainer>
       <Suspense fallback={<Spinner size={100} />}>
-        <Form
-          schema={schema}
-          data={data}
-          errors={errors}
-          onSetData={setData}
-          onSubmit={onSubmit}
-          onCancel={onCancel}
-        />
+        <Form schema={schema} errors={errors} onSubmit={onSubmit} onCancel={onCancel} />
       </Suspense>
     </StyledFormContainer>
   );
-}
+};
 
 export default FormContainer;
