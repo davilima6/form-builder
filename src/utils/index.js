@@ -5,5 +5,5 @@
  */
 
 export { getSchemaFromApi, normalize } from './utils';
-export { useForm } from './hooks';
+export { useForm, useScrollToTop } from './hooks';
 export { Choice, Error, Field } from './types';

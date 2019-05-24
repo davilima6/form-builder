@@ -3,7 +3,7 @@ import { Error, Field } from './types';
 import { getSchemaFromApi } from './utils';
 
 // eslint-disable-next-line import/prefer-default-export
-export function useForm(): Object {
+function useForm(): Object {
   const [schema: Array<Field>, setSchema: Function] = useState([]);
   const [errors: Array<Error>, setErrors: Function] = useState([]);
 
@@ -27,3 +27,11 @@ export function useForm(): Object {
     setErrors,
   };
 }
+
+function useScrollToTop() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+}
+
+export { useForm, useScrollToTop };
