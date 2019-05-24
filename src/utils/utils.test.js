@@ -4,7 +4,8 @@ import CONFIG from '../config';
 
 describe('utils', () => {
   test('getSchemaFromApi returns ', async () => {
-    const rawData = fs.readFileSync(CONFIG.api.mockedResponse);
+    const path = `${CONFIG.paths.appBase}/${CONFIG.paths.sampleResponse}`;
+    const rawData = fs.readFileSync(path);
     const expected = JSON.parse(rawData);
     const value = await getSchemaFromApi();
 

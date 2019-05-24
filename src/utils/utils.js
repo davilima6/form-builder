@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * Utilitary functions
  *
@@ -5,15 +7,17 @@
  * @example import { getSchemaFromApi } from 'utils';
  */
 
+import CONFIG from '../config';
 import { Field } from './types';
 
 async function getSchemaFromApi(): Promise<Array<Field>> {
-  const schema = await import('../sampleApiResponse.json');
+  const { sampleResponse } = CONFIG.paths;
+  const schema = await import(`../${sampleResponse}`);
 
   return schema;
 }
 
-function normalize(input: string): string {
+function normalize(input: ?string): string | mixed {
   const normalized = typeof input === 'string'
     ? input
       .trim()
