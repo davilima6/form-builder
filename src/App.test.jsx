@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { act } from 'react-dom/test-utils';
+import { BrowserRouter } from 'react-router-dom';
 import { cleanup, render } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 import App from './App';
@@ -8,16 +8,23 @@ import App from './App';
 test('renders without crashing', () => {
   const div = document.createElement('div');
 
-  act(() => {
-    ReactDOM.render(<App />, div);
-  });
+  ReactDOM.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    div,
+  );
 
   ReactDOM.unmountComponentAtNode(div);
 });
 
-test.skip('renders welcome message', () => {
+test('renders welcome message', () => {
   cleanup();
-  const { getByText } = render(<App />);
+  const { getByText } = render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+  );
 
   expect(getByText('Dynamic Form Builder')).toBeInTheDocument();
 });

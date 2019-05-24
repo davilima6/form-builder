@@ -1,6 +1,7 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import { FormContainer } from './components';
+import { FormContainer, FormSuccess } from './components';
 
 const StyledApp = styled.div`
   background: url('./bg.png');
@@ -8,8 +9,8 @@ const StyledApp = styled.div`
 
 const AppHeader = styled.header`
   align-items: center;
-  background-color: var(--lite-green);
-  color: white;
+  background-color: var(--dark-green);
+  color: #fff;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
@@ -28,7 +29,10 @@ function App() {
         <h1>Dynamic Form Builder</h1>
       </AppHeader>
       <AppMain>
-        <FormContainer />
+        <Switch>
+          <Route exact path="/" component={FormContainer} />
+          <Route path="/success" component={FormSuccess} />
+        </Switch>
       </AppMain>
     </StyledApp>
   );

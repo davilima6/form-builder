@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import GlobalStyle from './theme/globalStyle';
 import * as serviceWorker from './serviceWorker';
@@ -7,7 +8,9 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <>
     <GlobalStyle />
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </>,
   document.getElementById('root'),
 );

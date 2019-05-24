@@ -1,5 +1,6 @@
 // @flow
 import React, { useCallback, lazy, Suspense } from 'react';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { useForm } from '../../utils';
 import { Spinner } from '..';
@@ -11,19 +12,25 @@ const StyledFormContainer = styled.section`
   justify-content: center;
 `;
 
+type Props = {
+  history: Array<mixed>,
+};
+
 // function validate(data): boolean {
 //   return true || data;
 // }
 
-function redirectToSucess(): void {}
+function redirectTo(history, toRoute): void {
+  history.push(toRoute);
+}
 
-const FormContainer = () => {
+const FormContainer = ({ history }: Props) => {
   const { schema, errors, setErrors } = useForm();
 
   const onSubmit = useCallback((event: SyntheticEvent<>) => {
     event.preventDefault();
     // validate(data);
-    redirectToSucess();
+    redirectTo(history, 'success');
   }, []);
 
   const onCancel = useCallback(() => {
@@ -40,4 +47,4 @@ const FormContainer = () => {
   );
 };
 
-export default FormContainer;
+export default withRouter(FormContainer);

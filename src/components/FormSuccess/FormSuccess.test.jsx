@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { cleanup, render } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 // import 'jest-styled-components';
@@ -9,7 +10,12 @@ describe('Form', () => {
 
   beforeEach(() => {
     cleanup();
-    component = render(<FormSuccess />);
+    window.scrollTo = () => {};
+    component = render(
+      <BrowserRouter>
+        <FormSuccess />
+      </BrowserRouter>,
+    );
   });
 
   test('renders without crashing', () => expect(component).toBeDefined());
