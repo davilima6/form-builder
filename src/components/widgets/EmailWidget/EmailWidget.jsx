@@ -1,55 +1,94 @@
+// @flow
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { normalize } from '../../../utils';
 
+const { useCallback } = React;
+
 const WidgetWrapper = styled.div`
-  background-color: #fff;
+  ${props => props.error
+    && css`
+      border-color: var(--dark-red);
+    `};
 `;
 
-const Label = styled.label`
-  .label {
-    font-variant: small-caps;
-  }
+const Label = styled.label``;
+
+const StyledLabel = styled.div`
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  text-transform: capitalize;
 `;
 
-const Error = styled.div`
+const StyledInput = styled.input`
+  font-size: 1em;
+  padding: 3px 5px;
+  width: 100%;
+`;
+
+const StyledError = styled.div`
   border: 1px dashed red;
 `;
 
 type Props = {
   id: string,
   label: string,
-  data?: string,
-  errors?: Array<Object>,
-  onChange: Function,
+  pattern?: string,
+  maxLength?: number,
+  placeholder?: string,
+  required?: boolean,
+  value?: string,
+  errors?: Array<string>,
+  onChangeField: Function,
 };
 
-function EmailWidget({ id, label, data, errors, onChange }: Props) {
+const EmailWidget = ({
+  id,
+  label,
+  pattern,
+  maxLength,
+  placeholder,
+  required,
+  value,
+  errors,
+  onChangeField,
+}: Props) => {
   const fieldId = `field-${id}`;
 
+  const onChange = useCallback(({ target }: SyntheticEvent<>) => onChangeField(id, target.value), [
+    id,
+    onChangeField,
+  ]);
+
   return (
-    <WidgetWrapper>
+    <WidgetWrapper error={errors.length}>
       <Label htmlFor={fieldId}>
-        <span className="label">{label}</span>
-        <input
+        <StyledLabel>{label}</StyledLabel>
+        <StyledInput
           type="email"
           id={fieldId}
           name={id}
-          value={data || ''}
-          onChange={({ target }) =>
-            onChange(id, target.value !== '' ? target.value : undefined)
-          }
+          pattern={pattern}
+          maxLength={maxLength}
+          placeholder={placeholder}
+          required={required}
+          value={value}
+          onChange={onChange}
         />
       </Label>
       {errors.map(message => (
-        <Error key={normalize(message)}>{message}</Error>
+        <StyledError key={normalize(message)}>{message}</StyledError>
       ))}
     </WidgetWrapper>
   );
-}
+};
 
 EmailWidget.defaultProps = {
-  data: '',
+  pattern: '',
+  maxLength: null,
+  placeholder: null,
+  required: false,
+  value: '',
   errors: [],
 };
 

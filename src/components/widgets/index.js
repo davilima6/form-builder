@@ -1,7 +1,7 @@
 /**
- * Import point for component modules.
- * @module components
- * @example import { FormContainer } from 'components';
+ * Import point for widgets modules.
+ * @module widgets
+ * @example import { DateWidget } from 'widgets';
  */
 
 export { default as DateWidget } from './DateWidget/DateWidget';

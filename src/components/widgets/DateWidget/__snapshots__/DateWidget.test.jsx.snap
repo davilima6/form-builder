@@ -2,19 +2,11 @@
 
 exports[`DateWidget matches snapshot 1`] = `
 <DocumentFragment>
-  .c0 {
-  background-color: #fff;
-}
-
-.c1 .label {
-  font-variant: small-caps;
-}
-
-<div
-    class="c0"
+  <div
+    class="sc-bdVaJa djLaIN"
   >
     <label
-      class="c1"
+      class="sc-bwzfXH gezcZz"
       for="field-undefined"
     >
       <span
