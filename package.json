@@ -16,6 +16,8 @@
     "build": "react-scripts build",
     "lint:css": "stylelint './src/**/*.js'",
     "test": "react-scripts test",
+    "now-dev": "react-scripts start",
+    "now-build": "react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
