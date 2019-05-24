@@ -4,10 +4,15 @@
  * @example import { Field } from 'types';
  */
 
+export type Choice = string;
+
+export type Error = {
+  message: string,
+};
+
+export type FieldType = 'date' | 'email' | 'number' | 'radio' | 'text';
+
 export type Field = {
   label: string,
-  type: string,
-  data?: Array<Object>,
-  errors?: Array<Object>,
-  onChange: Function,
+  type: FieldType,
 };
