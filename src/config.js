@@ -4,7 +4,7 @@
  * @example import CONFIG from 'config';
  */
 
-export default {
+const CONFIG = {
   paths: {
     appBase: __dirname,
     sampleResponse: 'sampleApiResponse.json',
@@ -21,8 +21,15 @@ export default {
       limit: 20,
     },
     email: {
-      limit: 10,
-      pattern: '@google.com',
+      min: 3,
+      max: 10,
+      domain: '@google.com',
     },
   },
 };
+
+CONFIG.rules.email.pattern = `.{${CONFIG.rules.email.min},${CONFIG.rules.email.max}}${
+  CONFIG.rules.email.domain
+}$`;
+
+export default CONFIG;

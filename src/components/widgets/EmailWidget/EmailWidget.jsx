@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components';
+import CONFIG from '../../../config';
 import { normalize } from '../../../utils';
 
 const { useCallback } = React;
@@ -34,7 +35,6 @@ type Props = {
   id: string,
   label: string,
   pattern?: string,
-  maxLength?: number,
   placeholder?: string,
   required?: boolean,
   value?: string,
@@ -46,7 +46,6 @@ const EmailWidget = ({
   id,
   label,
   pattern,
-  maxLength,
   placeholder,
   required,
   value,
@@ -69,7 +68,6 @@ const EmailWidget = ({
           id={fieldId}
           name={id}
           pattern={pattern}
-          maxLength={maxLength}
           placeholder={placeholder}
           required={required}
           value={value}
@@ -85,7 +83,6 @@ const EmailWidget = ({
 
 EmailWidget.defaultProps = {
   pattern: '',
-  maxLength: null,
   placeholder: null,
   required: false,
   value: '',

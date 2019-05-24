@@ -45,8 +45,8 @@ function getPropsByRules(props: Object) {
     case 'email':
       newProps = {
         ...newProps,
+        placeholder: `your username${CONFIG.rules.email.domain}`,
         pattern: CONFIG.rules.email.pattern,
-        maxLength: CONFIG.rules.email.pattern.length + CONFIG.rules.email.limit,
       };
       break;
     default:
