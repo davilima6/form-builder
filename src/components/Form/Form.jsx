@@ -83,7 +83,11 @@ const Form = ({
         const key = normalize(`${field.type}_${field.label}`);
         const fieldName = normalize(field.label);
 
-        return (
+        // Display fields without validation history (i.e. first load or cleared form)
+        // or when validation history contains no errors (hide successfully validated)
+        const shouldDisplay = !errors[fieldName] || errors[fieldName].length;
+
+        return shouldDisplay ? (
           <Field
             key={key}
             id={fieldName}
@@ -94,7 +98,7 @@ const Form = ({
             errorMessages={errorMessages[fieldName]}
             onChangeField={onChangeField}
           />
-        );
+        ) : null;
       })}
       <FormActions>
         {onSubmit && <Button type="submit" title="Send" floated="right" primary />}
