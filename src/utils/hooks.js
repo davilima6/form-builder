@@ -28,10 +28,10 @@ function useForm(): Object {
   };
 }
 
-function useScrollToTop() {
+function useScrollToTop(syncWith = null) {
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, [syncWith]);
 }
 
 export { useForm, useScrollToTop };
