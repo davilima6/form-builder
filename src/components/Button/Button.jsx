@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 
 type Props = {
   floated?: string,
+  onClick?: Function,
   primary?: boolean,
   title: string,
   type?: string,
@@ -38,10 +39,10 @@ const StyledButton = styled.button`
 `;
 
 function Button({
-  floated, primary, title, type,
+  floated, onClick, primary, title, type,
 }: Props) {
   return (
-    <StyledButton type={type} floated={floated} title={title} primary={primary}>
+    <StyledButton type={type} floated={floated} title={title} primary={primary} onClick={onClick}>
       {title}
     </StyledButton>
   );
@@ -49,6 +50,7 @@ function Button({
 
 Button.defaultProps = {
   floated: null,
+  onClick: () => {},
   primary: false,
   type: 'button',
 };

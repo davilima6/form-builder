@@ -30,7 +30,7 @@ const FormDescription = styled.p`
 
 const FormActions = styled.div`
   display: flex;
-  margin-top: 3em;
+  margin: 3em 0.5em 0;
   padding: 0.5em;
 `;
 
@@ -47,7 +47,7 @@ type Props = {
   schema: Array<Field>,
   errors?: { [string]: Array<TypeError> },
   errorMessages?: { [string]: Array<string> },
-  data: { [string]: string },
+  data?: { [string]: string },
   dispatch: Function,
   onSubmit?: Function,
   onCancel?: Function,
@@ -63,7 +63,7 @@ const Form = ({
   onCancel,
 }: Props) => {
   const onChangeField = useCallback((label, value) => {
-    dispatch({ [normalize(label)]: value });
+    dispatch({ type: 'update', payload: { [normalize(label)]: value } });
   }, []);
 
   const FormHead = () => (

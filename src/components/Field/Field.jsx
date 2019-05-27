@@ -33,7 +33,7 @@ const WidgetWrapper = styled.div`
 
   ${props => props.error
     && css`
-      border: 1px solid var(--lite-red);
+      border: 1px solid var(--dark-red);
       padding: 1em;
       margin-top: 1em;
     `};

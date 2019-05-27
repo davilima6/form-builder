@@ -109,8 +109,8 @@ const FormContainer = ({ history }: Props) => {
   );
 
   const onCancel = useCallback(() => {
-    dispatch({});
-    setErrors([]);
+    dispatch({ type: 'reset' });
+    setErrors({});
   }, []);
 
   return (
