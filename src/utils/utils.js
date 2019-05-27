@@ -10,6 +10,15 @@
 import CONFIG from '../config';
 import { Field } from './types';
 
+function getMinAgeMinDateFrom(now: Date): Date {
+  const { min } = CONFIG.rules.age;
+  const minDate = new Date(now.getTime());
+
+  minDate.setFullYear(now.getFullYear() - min);
+
+  return minDate;
+}
+
 async function getSchemaFromApi(): Promise<Array<Field>> {
   const { sampleResponse } = CONFIG.paths;
   const schema = await import(`../${sampleResponse}`);
@@ -17,7 +26,16 @@ async function getSchemaFromApi(): Promise<Array<Field>> {
   return schema;
 }
 
-function normalize(input: ?string): string | mixed {
+function hasErrors(errors: { [string]: Array<Error> }): boolean {
+  const hasErrored = Object.keys(errors).reduce(
+    (hasError, fieldName) => hasError || errors[fieldName].length > 0,
+    false,
+  );
+
+  return hasErrored;
+}
+
+function normalize(input: ?string) {
   const normalized = typeof input === 'string'
     ? input
       .trim()
@@ -29,4 +47,6 @@ function normalize(input: ?string): string | mixed {
   return normalized;
 }
 
-export { getSchemaFromApi, normalize };
+export {
+  getMinAgeMinDateFrom, getSchemaFromApi, hasErrors, normalize,
+};

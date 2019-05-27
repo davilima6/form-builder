@@ -9,15 +9,13 @@ type Props = {
   type?: string,
 };
 
-const StyledButton = styled.button.attrs(({ floated }) => ({
-  floated,
-}))`
+const StyledButton = styled.button`
   background-color: #fff;
   border: 1px solid var(--lite-grey);
   border-radius: 3px;
   font-size: 1em;
-  margin-right: ${({ floated }) => (floated === 'left' ? 'auto' : '0')};
-  order: ${({ floated }) => (floated === 'left' ? '0' : '1')};
+  margin-right: ${props => (props.floated === 'left' ? 'auto' : '0')};
+  order: ${props => (props.floated === 'left' ? '0' : '1')};
   padding: 0.5em 2em;
 
   :active {

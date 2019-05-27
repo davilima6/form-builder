@@ -17,19 +17,17 @@ const CONFIG = {
       min: 18,
       max: 60,
     },
-    text: {
-      limit: 20,
-    },
     email: {
-      min: 3,
-      max: 10,
       domain: '@google.com',
+      usernameMaxLength: 10,
+    },
+    text: {
+      max: 20,
     },
   },
 };
 
-CONFIG.rules.email.pattern = `.{${CONFIG.rules.email.min},${CONFIG.rules.email.max}}${
-  CONFIG.rules.email.domain
-}$`;
+CONFIG.rules.email.max = CONFIG.rules.email.usernameMaxLength + CONFIG.rules.email.domain.length;
+CONFIG.rules.email.pattern = `[\\w]+${CONFIG.rules.email.domain}$`;
 
 export default CONFIG;

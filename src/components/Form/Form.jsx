@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { Error as TypeError, normalize } from '../../utils';
+import { Error as TypeError, hasErrors, normalize } from '../../utils';
 import { Button, Field } from '..';
 
-const { useCallback, useReducer } = React;
+const { useCallback } = React;
 
 const StyledForm = styled.form`
   background-color: #fff;
@@ -13,16 +13,13 @@ const StyledForm = styled.form`
   box-shadow: 0 2px 2px 0 rgba(47, 55, 64, 0.2), 0 6px 10px 0 rgba(47, 55, 64, 0.2);
   margin: 1em 0 1.5em;
   min-width: 60vw;
-  padding: 2em 3em 0;
+  padding: 2em 2em 1em;
 
-  ${props => props.error
-    && css`
-      border-color: var(--dark-red);
-    `};
+  ${props => props.error && 'border: 2px solid var(--dark-red'};
 `;
 
 const FormHeader = styled.div`
-  margin-bottom: 2em;
+  margin: 0 0 2em 1em;
 `;
 
 const FormTitle = styled.h2``;
@@ -38,31 +35,36 @@ const FormActions = styled.div`
 `;
 
 const StyledError = styled.div`
-  border: 1px dashed red;
+  background-color: var(--lite-red);
+  border-radius: 3px;
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  margin-top: 1em;
+  padding: 1em;
 `;
 
 type Props = {
   schema: Array<Field>,
-  errors?: Array<TypeError>,
-  data?: { [string]: string },
+  errors?: { [string]: Array<TypeError> },
+  errorMessages?: { [string]: Array<string> },
+  data: { [string]: string },
+  dispatch: Function,
   onSubmit?: Function,
   onCancel?: Function,
 };
 
 const Form = ({
-  schema, errors = [], onSubmit, onCancel,
+  schema,
+  errors = {},
+  errorMessages,
+  data,
+  dispatch,
+  onSubmit,
+  onCancel,
 }: Props) => {
-  const [formData: Object<{ [string]: mixed }>, dispatch] = useReducer(
-    (state, action) => ({ ...state, ...action }),
-    {},
-  );
-
-  const onChangeField = useCallback(
-    (label, value) => {
-      dispatch({ [normalize(label)]: value });
-    },
-    [dispatch],
-  );
+  const onChangeField = useCallback((label, value) => {
+    dispatch({ [normalize(label)]: value });
+  }, []);
 
   const FormHead = () => (
     <FormHeader>
@@ -74,9 +76,9 @@ const Form = ({
   return (
     <StyledForm method="post" onSubmit={onSubmit} error={errors.length}>
       <FormHead />
-      {errors.map((error: TypeError) => (
-        <StyledError key={normalize(error.message)}>{error.message}</StyledError>
-      ))}
+
+      {hasErrors(errors) && <StyledError>{errorMessages.hasErrors()}</StyledError>}
+
       {schema.map((field) => {
         const key = normalize(`${field.type}_${field.label}`);
         const fieldName = normalize(field.label);
@@ -87,10 +89,10 @@ const Form = ({
             id={fieldName}
             label={field.label}
             type={field.type}
-            value={formData[fieldName] ? formData[fieldName] : ''}
+            value={data[fieldName] ? data[fieldName] : ''}
             errors={errors[fieldName]}
+            errorMessages={errorMessages[fieldName]}
             onChangeField={onChangeField}
-            required
           />
         );
       })}
@@ -104,9 +106,11 @@ const Form = ({
 
 Form.defaultProps = {
   data: {},
-  errors: [],
+  errors: {},
+  errorMessages: {},
   onSubmit: () => {},
   onCancel: () => {},
 };
 
 export default Form;
+export { StyledError };

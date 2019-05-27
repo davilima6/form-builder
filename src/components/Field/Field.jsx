@@ -1,14 +1,42 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import CONFIG from '../../config';
-import { Field as TypeField, normalize } from '../../utils';
+import { Error, Field as TypeField, normalize } from '../../utils';
+import { StyledError } from '../Form/Form';
 import {
   DateWidget, EmailWidget, NumberWidget, RadioWidget, TextWidget,
 } from '../widgets';
 
+const Label = styled.label``;
+
 const FieldWrapper = styled.div`
   margin: 1em 0 1.25em;
+`;
+
+const StyledInput = styled.input`
+  box-sizing: border-box;
+  font-size: 1em;
+  padding: 3px 5px;
+  width: 100%;
+`;
+
+const StyledLabel = styled.div`
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  text-transform: capitalize;
+`;
+
+const WidgetWrapper = styled.div`
+  border-radius: 3px;
+  padding: 0 1em;
+
+  ${props => props.error
+    && css`
+      border: 1px solid var(--lite-red);
+      padding: 1em;
+      margin-top: 1em;
+    `};
 `;
 
 function getWidgetByType(type: string) {
@@ -36,15 +64,9 @@ function getPropsByRules(props: Object) {
   };
 
   switch (fieldType) {
-    case 'number':
-      newProps = { ...newProps, min: CONFIG.rules.age.min, max: CONFIG.rules.age.max };
-      break;
-    case 'text':
-      newProps = { ...newProps, maxLength: CONFIG.rules.text.max };
-      break;
     case 'email':
       newProps = {
-        ...newProps,
+        ...props,
         placeholder: `your username${CONFIG.rules.email.domain}`,
         pattern: CONFIG.rules.email.pattern,
       };
@@ -74,3 +96,6 @@ const Field = React.memo<TypeField>((fieldProps: TypeField) => {
 });
 
 export default Field;
+export {
+  Label, StyledError, StyledInput, StyledLabel, WidgetWrapper,
+};

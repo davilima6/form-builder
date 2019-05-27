@@ -5,6 +5,8 @@ import { cleanup, render } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 import FormContainer from './FormContainer';
 
+window.scrollTo = jest.fn();
+
 describe('Form', () => {
   let component;
 

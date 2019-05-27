@@ -5,12 +5,13 @@ import 'jest-dom/extend-expect';
 // import 'jest-styled-components';
 import FormSuccess from './FormSuccess';
 
+window.scrollTo = jest.fn();
+
 describe('Form', () => {
   let component;
 
   beforeEach(() => {
     cleanup();
-    window.scrollTo = () => {};
     component = render(
       <BrowserRouter>
         <FormSuccess />

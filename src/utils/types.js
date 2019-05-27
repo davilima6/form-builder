@@ -6,9 +6,7 @@
 
 export type Choice = string;
 
-export type Error = {
-  message: string,
-};
+export type Error = string;
 
 export type FieldType = 'date' | 'email' | 'number' | 'radio' | 'text';
 
