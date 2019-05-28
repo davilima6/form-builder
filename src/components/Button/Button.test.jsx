@@ -14,7 +14,7 @@ describe('Button', () => {
 
   test('renders without crashing', () => expect(component).toBeDefined());
 
-  test.skip('matches snapshot', () => {
+  test('matches snapshot', () => {
     const { asFragment } = component;
 
     expect(asFragment()).toMatchSnapshot();

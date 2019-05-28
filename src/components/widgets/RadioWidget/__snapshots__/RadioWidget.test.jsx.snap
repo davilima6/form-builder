@@ -3,53 +3,57 @@
 exports[`RadioWidget matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdVaJa djLaIN"
+    class="sc-kgoBCf iTvLnm sc-gZMcBi elkPFK"
   >
-    <label
-      class="sc-bwzfXH gezcZz"
-      for="field-0"
+    <div
+      class="sc-kAzzGY PNMAR sc-iwsKbI lozmY"
     >
-      <span
-        class="label"
+      email
+    </div>
+    <label
+      class="sc-cSHVUG cbwAoo sc-gzVnrw ibZhkv"
+      for="field-undefined-female"
+    >
+      <div
+        class="sc-chPdSV dlLgJc"
       >
-        yes
-      </span>
+        Female
+      </div>
       <input
-        checked=""
-        id="field-0"
-        name="email"
+        class="sc-dnqmqq FidME"
+        id="field-undefined-female"
         type="radio"
         value="0"
       />
     </label>
     <label
-      class="sc-bwzfXH gezcZz"
-      for="field-1"
+      class="sc-cSHVUG cbwAoo sc-gzVnrw ibZhkv"
+      for="field-undefined-male"
     >
-      <span
-        class="label"
+      <div
+        class="sc-chPdSV dlLgJc"
       >
-        no
-      </span>
+        Male
+      </div>
       <input
-        id="field-1"
-        name="email"
+        class="sc-dnqmqq FidME"
+        id="field-undefined-male"
         type="radio"
         value="1"
       />
     </label>
     <label
-      class="sc-bwzfXH gezcZz"
-      for="field-2"
+      class="sc-cSHVUG cbwAoo sc-gzVnrw ibZhkv"
+      for="field-undefined-non-binary"
     >
-      <span
-        class="label"
+      <div
+        class="sc-chPdSV dlLgJc"
       >
-        maybe
-      </span>
+        Non-Binary
+      </div>
       <input
-        id="field-2"
-        name="email"
+        class="sc-dnqmqq FidME"
+        id="field-undefined-non-binary"
         type="radio"
         value="2"
       />

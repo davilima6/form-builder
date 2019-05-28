@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form matches snapshot 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-bdVaJa toVoZ"
+  >
+    <h2>
+      Success!
+    </h2>
+    <p>
+      Your data has been validated and sent to our team.
+    </p>
+    <p>
+      Thank you for your submission.
+    </p>
+    <a
+      class="sc-bwzfXH oGNiN"
+      href="/"
+    >
+      Try it again!
+    </a>
+  </form>
+</DocumentFragment>
+`;

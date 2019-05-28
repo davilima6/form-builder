@@ -3,7 +3,7 @@
 exports[`Button matches snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdVaJa cmutDk"
+    class="sc-bdVaJa dRrwhE"
     type="button"
   />
 </DocumentFragment>

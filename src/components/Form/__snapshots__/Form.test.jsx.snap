@@ -3,18 +3,229 @@
 exports[`Form matches snapshot 1`] = `
 <DocumentFragment>
   <form
-    class="sc-kgoBCf cCfYcM"
+    class="sc-fjdhpX laQhmB"
     method="post"
   >
     <div
-      class="sc-kGXeez boIQDi"
+      class="sc-jzJRlG HjlPv"
+    >
+      <h2
+        class="sc-cSHVUG CAuLq"
+      >
+        Title of the form
+      </h2>
+      <p
+        class="sc-kAzzGY idFEFu"
+      >
+        Longer description of the form
+      </p>
+    </div>
+    <div
+      class="sc-bZQynM EsGCe"
+    >
+      <div
+        class="sc-dnqmqq jvzWdJ"
+      >
+        <label
+          class="sc-EHOje jvzENE"
+          for="field-first-name"
+        >
+          <div
+            class="sc-htoDjs dhLPgd"
+          >
+            First Name
+          </div>
+          <input
+            class="sc-gzVnrw eWqNKI"
+            id="field-first-name"
+            name="first-name"
+            type="text"
+            value=""
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      class="sc-bZQynM EsGCe"
+    >
+      <div
+        class="sc-dnqmqq jvzWdJ"
+      >
+        <label
+          class="sc-EHOje jvzENE"
+          for="field-last-name"
+        >
+          <div
+            class="sc-htoDjs dhLPgd"
+          >
+            Last Name
+          </div>
+          <input
+            class="sc-gzVnrw eWqNKI"
+            id="field-last-name"
+            name="last-name"
+            type="text"
+            value=""
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      class="sc-bZQynM EsGCe"
+    >
+      <div
+        class="sc-dnqmqq jvzWdJ"
+      >
+        <label
+          class="sc-EHOje jvzENE"
+          for="field-email"
+        >
+          <div
+            class="sc-htoDjs dhLPgd"
+          >
+            email
+          </div>
+          <input
+            class="sc-gzVnrw eWqNKI"
+            id="field-email"
+            name="email"
+            placeholder="your username@google.com"
+            type="email"
+            value=""
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      class="sc-bZQynM EsGCe"
+    >
+      <div
+        class="sc-dnqmqq jvzWdJ"
+      >
+        <label
+          class="sc-EHOje jvzENE"
+          for="field-age"
+        >
+          <div
+            class="sc-htoDjs dhLPgd"
+          >
+            Age
+          </div>
+          <input
+            class="sc-gzVnrw eWqNKI"
+            id="field-age"
+            name="age"
+            type="number"
+            value=""
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      class="sc-bZQynM EsGCe"
+    >
+      <div
+        class="sc-ifAKCX cZFrkc sc-dnqmqq jvzWdJ"
+      >
+        <div
+          class="sc-htpNat iknpIM sc-htoDjs dhLPgd"
+        >
+          Gender
+        </div>
+        <label
+          class="sc-bwzfXH dnzClS sc-EHOje jvzENE"
+          for="field-gender-female"
+        >
+          <div
+            class="sc-bxivhb kTYxlA"
+          >
+            Female
+          </div>
+          <input
+            class="sc-gzVnrw eWqNKI"
+            id="field-gender-female"
+            name="gender"
+            type="radio"
+            value="0"
+          />
+        </label>
+        <label
+          class="sc-bwzfXH dnzClS sc-EHOje jvzENE"
+          for="field-gender-male"
+        >
+          <div
+            class="sc-bxivhb kTYxlA"
+          >
+            Male
+          </div>
+          <input
+            class="sc-gzVnrw eWqNKI"
+            id="field-gender-male"
+            name="gender"
+            type="radio"
+            value="1"
+          />
+        </label>
+        <label
+          class="sc-bwzfXH dnzClS sc-EHOje jvzENE"
+          for="field-gender-non-binary"
+        >
+          <div
+            class="sc-bxivhb kTYxlA"
+          >
+            Non-Binary
+          </div>
+          <input
+            class="sc-gzVnrw eWqNKI"
+            id="field-gender-non-binary"
+            name="gender"
+            type="radio"
+            value="2"
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      class="sc-bZQynM EsGCe"
+    >
+      <div
+        class="sc-dnqmqq jvzWdJ"
+      >
+        <label
+          class="sc-EHOje jvzENE"
+          for="field-date-of-birth"
+        >
+          <div
+            class="sc-htoDjs dhLPgd"
+          >
+            Date of Birth
+          </div>
+          <input
+            class="sc-gzVnrw eWqNKI"
+            id="field-date-of-birth"
+            name="date-of-birth"
+            type="date"
+            value=""
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      class="sc-chPdSV cxboSq"
     >
       <button
-        class="sc-bdVaJa dWqSyo"
+        class="sc-bdVaJa cdNCer"
         title="Send"
         type="submit"
       >
         Send
+      </button>
+      <button
+        class="sc-bdVaJa gzdvGZ"
+        title="Clear"
+        type="reset"
+      >
+        Clear
       </button>
     </div>
   </form>

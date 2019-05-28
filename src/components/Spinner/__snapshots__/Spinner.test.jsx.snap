@@ -7,9 +7,9 @@ exports[`Spinner matches snapshot 1`] = `
   >
     <img
       alt="Loading..."
-      height="200"
+      class="sc-bwzfXH cQqVHA"
+      size="200"
       src="spinner.svg"
-      width="200"
     />
   </div>
 </DocumentFragment>

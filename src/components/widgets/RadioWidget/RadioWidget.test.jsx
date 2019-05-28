@@ -4,6 +4,8 @@ import 'jest-dom/extend-expect';
 // import 'jest-styled-components';
 import RadioWidget from './RadioWidget';
 
+window.scrollTo = jest.fn();
+
 describe('RadioWidget', () => {
   let component;
 
@@ -11,7 +13,7 @@ describe('RadioWidget', () => {
     const props = {
       label: 'email',
       type: 'radio',
-      choices: ['Male', 'Female', 'Non-Binary'],
+      choices: ['Female', 'Male', 'Non-Binary'],
       data: { id: 0 },
       errors: [],
       onChange: () => {},
@@ -23,10 +25,10 @@ describe('RadioWidget', () => {
 
   test('renders without crashing', () => expect(component).toBeDefined());
 
-  test.skip('matches snapshot', () => {
+  test('matches snapshot', () => {
     const { asFragment } = component;
 
     expect(asFragment()).toMatchSnapshot();
-    expect(asFragment()).toHaveStyleRule('background', '#fff');
+    // expect(asFragment()).toHaveStyleRule('background', '#fff');
   });
 });

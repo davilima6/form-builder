@@ -3,21 +3,22 @@
 exports[`NumberWidget matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdVaJa djLaIN"
+    class="sc-fjdhpX fQffyr"
   >
     <label
-      class="sc-bwzfXH gezcZz"
+      class="sc-gZMcBi giNnHm"
       for="field-undefined"
     >
-      <span
-        class="label"
+      <div
+        class="sc-jTzLTM jXxOTJ"
       >
         Age
-      </span>
+      </div>
       <input
+        class="sc-VigVT dQqCzP"
         id="field-undefined"
-        type="datetime-local"
-        value="28"
+        type="number"
+        value=""
       />
     </label>
   </div>

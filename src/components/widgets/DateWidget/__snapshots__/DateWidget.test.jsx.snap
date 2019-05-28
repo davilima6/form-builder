@@ -3,20 +3,21 @@
 exports[`DateWidget matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdVaJa djLaIN"
+    class="sc-fjdhpX fQffyr"
   >
     <label
-      class="sc-bwzfXH gezcZz"
+      class="sc-gZMcBi giNnHm"
       for="field-undefined"
     >
-      <span
-        class="label"
+      <div
+        class="sc-jTzLTM jXxOTJ"
       >
         Date of Birth
-      </span>
+      </div>
       <input
+        class="sc-VigVT dQqCzP"
         id="field-undefined"
-        type="datetime-local"
+        type="date"
         value=""
       />
     </label>
