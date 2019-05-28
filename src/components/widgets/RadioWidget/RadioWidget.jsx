@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import { Choice, Error, normalize } from '../../../utils';
+import { Choice, Error as TypeError, normalize } from '../../../utils';
 import {
   Label as LabelBase,
   StyledError,
@@ -36,14 +36,13 @@ type Props = {
   label: string,
   choices: Array<Choice>,
   value?: Choice,
-  errors?: Array<Error>,
+  errors?: Array<TypeError>,
   onChangeField: Function,
 };
 
 const RadioWidget = ({
   id, label, choices, value, errors, onChangeField,
 }: Props) => {
-  const fieldId = `field-${id}`;
   const onChange = useCallback(
     ({ target }: SyntheticEvent<>) => {
       onChangeField(id, target.value);
@@ -52,7 +51,7 @@ const RadioWidget = ({
   );
 
   return (
-    <WidgetWrapper error={errors.length}>
+    <WidgetWrapper hasError={errors.length > 0}>
       <StyledLabel>{label}</StyledLabel>
       {choices
         && choices.map((choice: Choice, enumKey: number) => {

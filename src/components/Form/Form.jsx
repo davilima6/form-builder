@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Error as TypeError, hasErrors, normalize } from '../../utils';
-import { Button, Field } from '..';
+import { Button, Field, FieldData } from '..';
 
 const { useCallback } = React;
 
@@ -46,8 +46,8 @@ const StyledError = styled.div`
 type Props = {
   schema: Array<Field>,
   errors?: { [string]: Array<TypeError> },
-  errorMessages?: { [string]: Array<string> },
-  data?: { [string]: string },
+  errorMessages?: { [string]: Array<TypeError> },
+  data?: FieldData,
   dispatch: Function,
   onSubmit?: Function,
   onCancel?: Function,

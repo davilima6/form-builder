@@ -8,9 +8,9 @@ export type Choice = string;
 
 export type Error = string;
 
-export type FieldType = 'date' | 'email' | 'number' | 'radio' | 'text';
-
 export type Field = {
   label: string,
-  type: FieldType,
+  type: 'date' | 'email' | 'number' | 'radio' | 'text',
 };
+
+export type FieldData = { [string]: string | number };

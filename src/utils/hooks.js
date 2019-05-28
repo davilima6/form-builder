@@ -1,8 +1,8 @@
 import { useEffect, useReducer, useState } from 'react';
-import { Error, Field } from './types';
+import { Error, Field, FieldData } from './types';
 import { getSchemaFromApi } from './utils';
 
-const formReducer = (state: Object, action: Object) => {
+const formReducer = (state: FieldData, action: { type: string, payload: FieldData }) => {
   switch (action.type) {
     case 'update':
       return { ...state, ...action.payload };
@@ -13,9 +13,15 @@ const formReducer = (state: Object, action: Object) => {
   }
 };
 
-function useForm(): Object {
+function useForm(): {
+  schema: Array<Field>,
+  data: FieldData,
+  dispatch: Function,
+  errors: { [string]: Array<TypeError> },
+  setErrors: Function,
+  } {
   const [schema: Array<Field>, setSchema: Function] = useState([]);
-  const [data: Object<{ [string]: mixed }>, dispatch] = useReducer(formReducer, {});
+  const [data: { [string]: mixed }, dispatch] = useReducer(formReducer, {});
   const [errors: Array<Error>, setErrors: Function] = useState([]);
 
   useEffect(() => {

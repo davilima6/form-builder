@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { normalize } from '../../../utils';
+import { Error as TypeError, normalize } from '../../../utils';
 import {
   Label, StyledError, StyledInput, StyledLabel, WidgetWrapper,
 } from '../..';
@@ -12,7 +12,7 @@ type Props = {
   label: string,
   placeholder?: string,
   value?: string,
-  errors?: Array<string>,
+  errors?: Array<TypeError>,
   onChangeField: Function,
 };
 
@@ -26,7 +26,7 @@ const EmailWidget = ({
   ]);
 
   return (
-    <WidgetWrapper error={errors.length}>
+    <WidgetWrapper hasError={errors.length > 0}>
       <Label htmlFor={fieldId}>
         <StyledLabel>{label}</StyledLabel>
         <StyledInput

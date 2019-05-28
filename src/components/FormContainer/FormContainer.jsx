@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import CONFIG from '../../config';
 import {
-  Error,
+  Error as TypeError,
   Field,
   hasErrors,
   getMinAgeMinDateFrom,
@@ -24,7 +24,7 @@ import { Spinner } from '..';
 
 const Form = lazy(() => import('../Form/Form'));
 
-function validate(schema: { [string]: Field }, data: { [string]: Error }): Array<Error> {
+function validate(schema: { [string]: Field }, data: { [string]: TypeError }): Array<TypeError> {
   const errors = schema.reduce((obj, field) => {
     const fieldName = normalize(field.label);
     const currentValue = data[fieldName] || '';
@@ -83,7 +83,7 @@ const StyledFormContainer = styled.section`
 `;
 
 type Props = {
-  history: Array<string>,
+  history: { [string]: mixed },
 };
 
 const FormContainer = ({ history }: Props) => {
@@ -105,7 +105,7 @@ const FormContainer = ({ history }: Props) => {
 
       setErrors(prevErrors => ({ ...prevErrors, ...newErrors }));
     },
-    [data],
+    [schema, data],
   );
 
   const onCancel = useCallback(() => {

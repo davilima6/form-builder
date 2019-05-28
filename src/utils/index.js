@@ -8,4 +8,6 @@ export {
   getMinAgeMinDateFrom, getSchemaFromApi, hasErrors, normalize,
 } from './utils';
 export { useForm, useScrollToTop } from './hooks';
-export { Choice, Error, Field } from './types';
+export {
+  Choice, Error, Field, FieldData,
+} from './types';

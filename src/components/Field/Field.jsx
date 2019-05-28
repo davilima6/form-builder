@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import CONFIG from '../../config';
-import { Error, Field as TypeField, normalize } from '../../utils';
+import { Field as TypeField, normalize } from '../../utils';
 import { StyledError } from '../Form/Form';
 import {
   DateWidget, EmailWidget, NumberWidget, RadioWidget, TextWidget,
@@ -31,7 +31,7 @@ const WidgetWrapper = styled.div`
   border-radius: 3px;
   padding: 0 1em;
 
-  ${props => props.error
+  ${props => props.hasError
     && css`
       border: 1px solid var(--dark-red);
       padding: 1em;
@@ -56,25 +56,31 @@ function getWidgetByType(type: string) {
   }
 }
 
-function getPropsByRules(props: Object) {
-  const fieldType = props.type;
-  const fieldName = normalize(props.label);
+function getPropsByRules(props: {
+  key: string,
+  id: string,
+  label: string,
+  type: string,
+  value: string | number,
+  errors: {},
+  errorMessages: {},
+  onChangeField: Function,
+}) {
   let newProps = {
     ...props,
   };
 
-  switch (fieldType) {
+  switch (props.type) {
     case 'email':
       newProps = {
         ...props,
         placeholder: `your username${CONFIG.rules.email.domain}`,
-        pattern: CONFIG.rules.email.pattern,
       };
       break;
     default:
   }
 
-  switch (fieldName) {
+  switch (props.id) {
     case 'gender':
       newProps = { ...props, choices: CONFIG.enums.gender };
       break;
