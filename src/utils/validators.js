@@ -3,6 +3,7 @@ import { Error as TypeError } from '.';
 
 const errorMessages: { [string]: Function } = {
   dateMin: min => `Date must be same or before ${new Date(min).toDateString()}`,
+  isPristine: () => 'Form has not been filled out yet so it cannot be submitted',
   minMax: (min, max) => `Number is not within accepted range: from ${min} to ${max} (inclusive)`,
   max: max => `Maximum accepted value is ${max}`,
   maxLength: max => `Maximum text length is ${max} characters`,

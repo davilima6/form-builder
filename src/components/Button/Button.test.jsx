@@ -18,6 +18,12 @@ describe('Button', () => {
     const { asFragment } = component;
 
     expect(asFragment()).toMatchSnapshot();
-    // expect(json).toHaveStyleRule('color', 'red');
+  });
+
+  test('matches snapshot for disabled state', () => {
+    component = render(<Button disabled />);
+    const { asFragment } = component;
+
+    expect(asFragment()).toMatchSnapshot();
   });
 });

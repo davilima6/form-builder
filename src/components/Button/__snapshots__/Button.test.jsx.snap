@@ -3,7 +3,18 @@
 exports[`Button matches snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdVaJa dRrwhE"
+    class="sc-bdVaJa hjNKPk"
+    type="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`Button matches snapshot for disabled state 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdVaJa eNYMjX"
+    disabled=""
+    title="Form has not been filled out yet so it cannot be submitted"
     type="button"
   />
 </DocumentFragment>

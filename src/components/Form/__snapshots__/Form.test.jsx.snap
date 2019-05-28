@@ -214,14 +214,15 @@ exports[`Form matches snapshot 1`] = `
       class="sc-chPdSV cxboSq"
     >
       <button
-        class="sc-bdVaJa cdNCer"
-        title="Send"
+        class="sc-bdVaJa bKWFes"
+        disabled=""
+        title="Form has not been filled out yet so it cannot be submitted"
         type="submit"
       >
         Send
       </button>
       <button
-        class="sc-bdVaJa gzdvGZ"
+        class="sc-bdVaJa fYbgcP"
         title="Clear"
         type="reset"
       >

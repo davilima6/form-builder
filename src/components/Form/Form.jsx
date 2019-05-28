@@ -73,6 +73,8 @@ const Form = ({
     </FormHeader>
   );
 
+  const shouldDisableSubmit = Object.keys(data).length === 0;
+
   return (
     <StyledForm method="post" onSubmit={onSubmit} error={errors.length}>
       <FormHead />
@@ -101,7 +103,15 @@ const Form = ({
         ) : null;
       })}
       <FormActions>
-        {onSubmit && <Button type="submit" title="Send" floated="right" primary />}
+        {onSubmit && (
+          <Button
+            type="submit"
+            title="Send"
+            floated="right"
+            disabled={shouldDisableSubmit}
+            primary
+          />
+        )}
         {onCancel && <Button type="reset" title="Clear" floated="left" onClick={onCancel} />}
       </FormActions>
     </StyledForm>
